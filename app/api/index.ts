@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {Alert} from 'react-native';
-
+import Constants from 'expo-constants'
 
 const config = {
   baseURL: 'https://api.paystack.co',
   timeout: 20000,
-  headers: {
-    'Authorization': `Bearer sk_test_fa92056e0b08431917ff5f21b7755d7c5e696bad`,
+  headers: { 
+    'Authorization': `Bearer ${Constants?.manifest?.extra?.paystackSecret}`,
   },
   withCredentials: true,
 };

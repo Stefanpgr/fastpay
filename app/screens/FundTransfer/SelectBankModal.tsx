@@ -9,11 +9,12 @@ import {
   TouchableOpacity,
   FlatList,
   ActivityIndicator,
+  Platform,
 } from 'react-native'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { appTheme, fontsize } from '../../config'
-import globalStyles from '../../globals/styles'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { RootState } from '../../redux'
 import { fetchBanks } from '../../redux/Bank/BankAction'
 import actionType from '../../redux/Bank/BankActionType'
@@ -50,9 +51,8 @@ const SelectBankModal: FunctionComponent<FundTransferProps> = ({ navigation }) =
         <View style={styles.headWrp}>
           <View />
 
-          <Pressable style={{ marginTop: 5 }} onPress={() => navigation.goBack()}>
-            <Text onPress={() => navigation.goBack()}>x</Text>
-            {/* <XIcon /> */}
+          <Pressable style={{ marginTop: Platform.OS === 'android' ?  50 : 20 }} onPress={() => navigation.goBack()}>
+            <MaterialCommunityIcons  size={25} name='close' />
           </Pressable>
         </View>
 

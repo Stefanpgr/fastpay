@@ -1,4 +1,5 @@
-{
+import 'dotenv/config';
+export default {
   "expo": {
     "name": "fastpay",
     "slug": "fastpay",
@@ -27,6 +28,9 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
+    },
+    extra: {
+      paystackSecret: process.env.PAYSTACK_SECRET
     }
   }
 }

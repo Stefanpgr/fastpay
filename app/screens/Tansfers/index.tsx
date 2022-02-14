@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect } from 'react'
 import { ActivityIndicator, FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import RencentTransferCard from '../../components/RecentTransferCard'
+import { appTheme } from '../../config'
 import globalStyles from '../../globals/styles'
 import { RootState } from '../../redux'
 import { FetchTransfers } from '../../redux/Bank/BankAction'
@@ -34,9 +35,10 @@ const TransfersScreen: FunctionComponent<TransfersProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={globalStyles.container}>
       {loading ? (
-        <ActivityIndicator />
+        <ActivityIndicator  size='large' color={appTheme.primaryColor}/>
       ) : (
         <FlatList
+        showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.content}
           data={transferData}
           renderItem={({ item }) => (
