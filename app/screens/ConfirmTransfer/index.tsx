@@ -25,7 +25,7 @@ interface ConfirmTransferScreenProps {
 
 const ConfirmTransferScreen: FunctionComponent<ConfirmTransferScreenProps> = ({ navigation, route }) => {
   const dispatch = useDispatch()
-  const { loading }: boolean = useSelector<RootState>((reducer) => reducer.transactions)
+  const { loading }: boolean = useSelector<RootState>((reducer) => reducer.transfers)
 
   const transferData: TransferdataProps = route.params.transferData
   const handleConfirm = () => {

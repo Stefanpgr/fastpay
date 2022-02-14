@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import {bankList, transactions} from './Bank/BankReducer';
+import {bankList, transfers} from './Bank/BankReducer';
 
 export const reducers = combineReducers({
   bankList,
-  transactions
+  transfers
 });
 export type RootState = ReturnType<typeof reducers>;

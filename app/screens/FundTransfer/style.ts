@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         fontSize: fontsize.HEADER4,
         justifyContent: 'center',
-        marginBottom: 20
+        marginBottom: 20,
+        borderRadius: 6,
+        
     },
     selectedBank: {
         fontSize: fontsize.HEADER4,

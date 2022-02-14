@@ -1,6 +1,8 @@
 import { FunctionComponent, useEffect, useState } from 'react'
 import * as yup from 'yup';
 import { Alert, SafeAreaView, TextInput, TouchableOpacity, View, Text, KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+
 import globalStyles from '../../globals/styles'
 import styles from './style'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,7 +19,7 @@ interface FundTransferProps {
 const FundTransferScreen: FunctionComponent<FundTransferProps> = ({ navigation }) => {
     const dispatch = useDispatch()
   const selectedBank: any = useSelector<RootState>((reducer) => reducer.bankList.selected)
-  const {loading}: boolean = useSelector<RootState>((reducer) => reducer.transactions)
+  const {loading}: boolean = useSelector<RootState>((reducer) => reducer.transfers)
 
   const [amountValue, setAmountValue] = useState<string>()
   const [accountNum, setAccountNum] = useState<string>()
@@ -69,25 +71,26 @@ const FundTransferScreen: FunctionComponent<FundTransferProps> = ({ navigation }
        
         <View>
           <Text style={styles.label}>Amount</Text>
-          <TextInput keyboardType="decimal-pad" onChangeText={(text) => {
+          <TextInput placeholder='Amount' keyboardType="decimal-pad" onChangeText={(text) => {
                setAmountValueText(text)
               setAmountValue(text)
         }} value={amountValueText} onBlur={() => formatCurrency(Number(amountValueText))}  onFocus={() => setAmountValueText(amountValue)} style={styles.textInput} />
         </View>
         <View>
           <Text style={styles.label}>Select Bank</Text>
-          <TouchableOpacity style={styles.textInput} onPress={() => navigation.navigate('SelectBankModal')}>
+          <TouchableOpacity style={[styles.textInput, {flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}]} onPress={() => navigation.navigate('SelectBankModal')}>
             <Text style={styles.selectedBank}>{selectedBank?.name}</Text>
+            <MaterialCommunityIcons size={26}  name='chevron-down'/>
           </TouchableOpacity>
         </View>
         <View>
           <Text style={styles.label}>Account Number</Text>
-          <TextInput value={accountNum} keyboardType='number-pad' onChangeText={(text) => setAccountNum(text)} style={styles.textInput} />
+          <TextInput placeholder='01234567' value={accountNum} keyboardType='number-pad' onChangeText={(text) => setAccountNum(text)} style={styles.textInput} />
         </View>
 
         <View>
-          <Text style={styles.label}>Description</Text>
-          <TextInput value={description} maxLength={50}  onChangeText={(text) => setDescription(text)} style={styles.textInput} />
+          <Text style={styles.label}>Description (optional)</Text>
+          <TextInput placeholder='Reason for transfer' value={description} maxLength={50}  onChangeText={(text) => setDescription(text)} style={styles.textInput} />
         </View>
 <View style={{marginTop: 15}}>
 <Button loading={loading} disabled={!amountValue || !accountNum || !selectedBank} onPress={handleSubmit} label='Next'/>

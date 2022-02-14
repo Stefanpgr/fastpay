@@ -11,3 +11,7 @@ export const initiateTransferApi = (data) => {
   export const finalizeTransferApi = (data) => {
     return axiosclient.post('/transfer', data);
   };
+
+  export const getTransfers = () => {
+    return axiosclient.get('/transfer');
+  };

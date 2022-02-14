@@ -27,12 +27,18 @@ const initialState = {
   }
 };
 
-export const transactions = (state = { loading: false, transactions: null}, action: any) => {
+export const transfers = (state = { loading: false, transferData: []}, action: any) => {
     switch (action.type) {
       case actionType.LOADING:
         return {
           ...state,
           loading: action.payload,
+        };
+        case actionType.FETCH_TRANSFERS:
+        return {
+          ...state,
+          transferData: action.payload,
+          loading: false,
         };
       default:
         return state;

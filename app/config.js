@@ -1,8 +1,9 @@
 export const appTheme = {
     primaryColor: '#3DB24B',
-    grey: '#F7F7F7',
+    grey: '#0000001A',
     white: '#fff',
-    black: '#000'
+    black: '#000',
+    red: 'red'
 }
 
 export const  fontsize = {
@@ -10,4 +11,5 @@ export const  fontsize = {
     HEADER2: 22,
     HEADER3: 18,
     HEADER4: 16,
+    SUBTEXT: 14
 } 
